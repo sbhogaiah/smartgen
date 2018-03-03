@@ -1,0 +1,93 @@
+/* layout */
+.fl-left {
+	float: left;
+}
+
+.fl-right {
+	float: right;
+}
+
+.p-r {
+	position: relative;
+}
+
+/* spacing */
+.mt-1 { margin-top: $spacing-1 !important; }
+.mt-2 { margin-top: $spacing-2 !important; }
+.mt-3 { margin-top: $spacing-3 !important; }
+.mt-4 { margin-top: $spacing-4 !important; }
+.mt-5 { margin-top: $spacing-5 !important; }
+
+.mb-1 { margin-bottom: $spacing-1 !important; }
+.mb-2 { margin-bottom: $spacing-2 !important; }
+.mb-3 { margin-bottom: $spacing-3 !important; }
+.mb-4 { margin-bottom: $spacing-4 !important; }
+.mb-5 { margin-bottom: $spacing-5 !important; }
+
+.mr-1 { margin-right: $spacing-1 !important; }
+.mr-2 { margin-right: $spacing-2 !important; }
+.mr-3 { margin-right: $spacing-3 !important; }
+.mr-4 { margin-right: $spacing-4 !important; }
+.mr-5 { margin-right: $spacing-5 !important; }
+
+.ml-1 { margin-left: $spacing-1 !important; }
+.ml-2 { margin-left: $spacing-2 !important; }
+.ml-3 { margin-left: $spacing-3 !important; }
+.ml-4 { margin-left: $spacing-4 !important; }
+.ml-5 { margin-left: $spacing-5 !important; }
+
+/* widths */
+@for $i from 1 through 10 {
+	.maxw-#{$i}0 { max-width: $i/10 * 100%; }
+	.minw-#{$i}0 { min-width: $i/10 * 100%; }
+}
+
+/* type */
+.ta-c { text-align: center; }
+.ta-l { text-align: left; }
+.ta-r { text-align: right; }
+
+.tt-c { text-transform: capitalize; }
+.tt-u { text-transform: uppercase; }
+.tt-l { text-transform: lowercase; }
+
+.fw-n { font-weight: $font-weight; }
+.fw-b { font-weight: $font-weight-bold; }
+.fw-h { font-weight: $font-weight-heavy; }
+
+/* borders */
+.border-right {
+	position: relative;
+	
+	&::after {
+		content: '';
+		display: block;
+		width: 1px;
+		height: 60%;
+		background-color: darken($lightest, 5%);
+		position: absolute;
+		right: -1px;
+		top: 0%;
+	}
+}
+
+.border-left {
+	position: relative;
+	
+	&::before {
+		content: '';
+		display: block;
+		width: 1px;
+		height: 50%;
+		background-color: darken($lightest, 5%);
+		position: absolute;
+		left: -1px;
+		top: 0%;
+	}
+}
+
+/* visibility */
+.hide { display: none !important; }
+.show-b { display: block !important; }
+.show-ib { display: inline-block !important; }
+.show-i { display: inline !important; }

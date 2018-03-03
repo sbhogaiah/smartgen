@@ -1,0 +1,166 @@
+/* transition */
+@mixin transition($speed: 'default', $props: all, $easing: ease) {
+	transition-property: $props;
+	transition-timing-function: $easing;
+
+	@if $speed=='fast' {
+		transition-duration: $speed-fast;
+	} @else if $speed=='default' {
+		transition-duration: $speed-default;
+	} @else if $speed=='slow' {
+		transition-duration: $speed-slow;
+	}
+}
+
+@mixin transition-props($props...) {
+	transition-property: $props;
+}
+
+/* gradient */
+@mixin gradient($color1, $color2) {
+	background: $color1;
+	background: -moz-linear-gradient(top, $color1 1%, $color2 100%);
+	background: -webkit-linear-gradient(top, $color1 1%,$color2 100%);
+	background: linear-gradient(to bottom, $color1 1%,$color2 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr=#{'$color1'}, endColorstr=#{'$color2'},GradientType=0 );
+}
+
+/* pills */
+@mixin pill($bg: $lightest, $color: $gray) {
+	border-radius: $border-radius-small;
+	color: $color;
+	@include gradient($bg, darken($bg, 5%));
+	@include transition('fast');
+
+	&.pill-outline {
+		background: transparent;
+		border: 1px solid $bg;
+		color: $bg;
+	}
+}
+
+/* buttons */
+@mixin button($bg: $lightest, $color: $gray) {
+	border: 1px solid $bg;
+	border-radius: $border-radius-small;
+	color: $color;
+	@include gradient($bg, darken($bg, 5%));
+	@include transition('fast');
+
+	&:hover:not(:disabled), &:focus {
+		@include gradient(darken($bg, 5%), darken($bg, 10%));
+		outline: 0;
+		text-decoration: none;
+	}
+
+	&.btn-icon {
+		padding-left: 0;
+
+		.fa {
+			border-right: 1px solid rgba($white, .2);
+			margin-right: 1rem;
+			width: 2.4rem;
+		}
+	}
+
+	&.btn-darker {
+		@include gradient(darken($bg, 5%), darken($bg, 10%));
+
+		&:hover:not(:disabled), &:focus {
+			@include gradient(darken($bg, 10%), darken($bg, 15%));
+		}
+	}
+
+	&.btn-outline {
+		background: transparent;
+		border: 1px solid $bg;
+		color: $bg;
+
+		&:hover:not(:disabled), &:focus {
+			background: $bg;
+			color: $color;
+		}
+
+		&.btn-icon {
+			.fa {
+				border-right-color: $bg;
+			}
+		}
+	}
+
+	&:disabled {
+		opacity: .4;
+		cursor: not-allowed;
+	}
+}
+
+/* nag */
+@mixin nag($bg: $blue, $color: $white) {
+	border-radius: $border-radius-small;
+	box-shadow: $shadow-mid;
+	color: $color;
+	@include gradient($bg, darken($bg, 5%));
+	@include transition('fast');
+}
+
+/* respond to */
+@mixin respond-to($media) {
+    @if $media == xs {
+		@media (max-width: $screen-xs) { @content }
+	}
+	@else if $media == sm {
+		@media (min-width: $screen-xs) { @content }
+	}
+	@else if $media == md {
+		@media (min-width: $screen-sm) { @content }
+	}
+	@else if $media == lg {
+		@media (min-width: $screen-md) { @content }
+	}
+	@else if $media == xl {
+		@media (min-width: $screen-lg) { @content }
+	}
+}
+
+/* grid */
+@mixin grid($columns: $grid-columns) {
+	@for $i from 1 through $columns {
+		.xs-#{$i}-#{$columns} {
+			width: $i/$columns * 100%;
+		}
+	}
+
+	@include respond-to(sm) {
+		@for $i from 1 through $columns {
+			.sm-#{$i}-#{$columns} {
+				width: $i/$columns * 100%;
+			}
+		}
+	}
+
+	@include respond-to(md) {
+		@for $i from 1 through $columns {
+			.md-#{$i}-#{$columns} {
+				width: $i/$columns * 100%;
+			}
+		}
+	}
+
+	@include respond-to(lg) {
+		@for $i from 1 through $columns {
+			.lg-#{$i}-#{$columns} {
+				width: $i/$columns * 100%;
+			}
+		}
+	}
+
+	@include respond-to(xl) {
+		@for $i from 1 through $columns {
+			.xl-#{$i}-#{$columns} {
+				width: $i/$columns * 100%;
+			}
+		}
+	}
+
+}
+

@@ -1,0 +1,80 @@
+.form {
+
+	&__group {
+		display: block;
+		margin-bottom: 1rem;
+	}
+	
+	label {
+		display: block;
+		font-size: 0.8em;
+		color: lighten($gray, 20%);
+		margin-bottom: 0.3rem;
+	}
+
+	input, select {
+		background-color: $white;
+		border: 1px solid $light;
+		border-radius: $border-radius-small;
+		color: $dark;
+		height: 2.6rem;
+		padding: 0 0.6rem;
+		font-size: 0.8em;
+		width: 100%;
+
+		&:focus {
+			border-color: $gray;
+			outline: 0;
+		}
+	}
+
+	select {
+		height: 2.6rem;
+	}
+
+	textarea {
+		background-color: transparent;
+		border: 1px solid $light;
+		border-radius: $border-radius-small;
+		color: $dark;
+		min-height: 5rem;
+		padding: 0.6rem 0.6rem;
+		font-size: 0.8em;
+		width: 100%;
+
+		&:focus {
+			border-color: $gray;
+			outline: 0;
+		}
+	}
+
+	a {
+		font-size: 0.8em;
+		display: block;
+		text-align: right;
+	}
+	
+	/* validation */
+	.form-error {
+		color: $red;
+	}
+
+}
+
+::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+  color: $light;
+}
+::-moz-placeholder { /* Firefox 19+ */
+  color: $light;
+}
+:-ms-input-placeholder { /* IE 10+ */
+  color: $light;
+}
+:-moz-placeholder { /* Firefox 18- */
+  color: $light;
+}
+
+:disabled {
+	cursor: not-allowed;
+	opacity: .5;
+}

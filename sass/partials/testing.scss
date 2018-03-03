@@ -1,0 +1,317 @@
+/* testing__content */
+.testing__content {
+	position: relative;
+}
+
+/* test-progress */
+.test-progress {
+	position: relative;
+	height: 50px;
+	margin-bottom: 2rem;
+
+	&__bg {
+		background-color: $lightest;
+		border-radius: $border-radius-big;
+		height: 2px;
+		width: 75%;
+		padding: 0 3px;
+		position: absolute;
+		top: 50%;
+		margin-top: -1px;
+		left: 12.5%;
+		z-index: 1;
+
+		> span {
+			display: block;
+			width: 0;
+			height: 2px;
+			position: absolute;
+			top: 50%;
+			margin-top: -1px;
+			left: 3px;
+			border-radius: $border-radius-big;
+			@include transition('default');
+			background-color: $light;
+		}
+	}
+
+	&__steps-bg {
+		position: absolute;
+		top: 50%;
+		left: 0;
+		margin-top: -11px;
+		width: 100%;
+		z-index: 3;
+
+		span {
+			display: inline-block;
+			border-radius: $border-radius-round;
+			height: 10px;
+			width: 10px;
+			background-color: $lightest;
+		}
+	}
+
+	&__steps {
+		position: absolute;
+		top: 60%;
+		left: 0;
+		width: 100%;
+		z-index: 3;
+	}
+
+	&__num {
+		display: inline-block;
+		// border: 1px solid transparent;
+		// border-radius: $border-radius-small;
+		color: $light;
+		font-size: 0.8em;
+		font-weight: $font-weight;
+		line-height: 2.4rem;
+		text-align: center;
+		// @include gradient($white, darken($white, 2%));
+		@include transition('default');
+	}
+	
+}
+
+// progress done
+.test-progress__done {
+	color: $green;
+}
+
+.test-steps__done {
+	span {
+		background-color: $green;
+	}
+}
+
+// progress current
+.test-progress__active {
+	color: $dark;
+	font-size: .9em;
+}
+
+.test-steps__active {
+	span {
+		background-color: $blue;
+		transform: scale(2);
+	}
+}
+
+/* test-buttons */
+.test-buttons {
+	min-height: 140px;
+}
+
+// tests-done-msg
+.tests-done-msg {
+	position: absolute;
+	height: 100%;
+	width: 100%;
+	text-align: center;
+	top: 0;
+	left: 0;
+	background-color: $overlay-bg;
+	z-index: 1;
+	display: none;
+
+	span {
+		color: $green;
+		display: block;
+		line-height: 50px;
+		position: absolute;
+		top: 50%;
+		left: 0;
+		width: 100%;
+		margin-top: -25px;
+		font-size: 1.4em;
+	}
+}
+
+// progress transition
+.progress-00 {
+	.test-progress {
+
+		&__num-one {
+			@extend .test-progress__active;
+		}
+
+		&__steps-bg-one {
+			@extend .test-steps__active;
+		}
+	}
+}
+
+.progress-25 {
+	.test-progress {
+		&__bg {
+			> span {
+				width: 33.3%;
+			}
+		}
+		
+		&__num-one {
+			@extend .test-progress__done;
+		}
+		&__num-two {
+			@extend .test-progress__active;
+		}
+
+		&__steps-bg-one {
+			@extend .test-steps__done;
+		}
+
+		&__steps-bg-two {
+			@extend .test-steps__active;
+		}
+	}
+}
+
+.progress-50 {
+	.test-progress {
+		&__bg {
+			> span {
+				width: 66.6%;
+			}
+		}
+
+		&__num-one,
+		&__num-two {
+			@extend .test-progress__done;
+		}
+
+		&__num-three {
+			@extend .test-progress__active;
+		}
+
+		&__steps-bg-one,
+		&__steps-bg-two {
+			@extend .test-steps__done;
+		}
+
+		&__steps-bg-three {
+			@extend .test-steps__active;
+		}
+	}
+}
+
+.progress-75 {
+	.test-progress {
+		&__bg {
+			> span {
+				width: 99%;
+			}
+		}
+
+		&__num-one,
+		&__num-two,
+		&__num-three {
+			@extend .test-progress__done;
+		}
+
+		&__num-four {
+			@extend .test-progress__active;
+		}
+
+		&__steps-bg-one,
+		&__steps-bg-two,
+		&__steps-bg-three {
+			@extend .test-steps__done;
+		}
+
+		&__steps-bg-four {
+			@extend .test-steps__active;
+		}
+	}
+}
+
+.progress-100 {
+	.test-progress {
+		&__bg {
+			> span {
+				width: 99%;
+			}
+		}
+
+		&__num-one,
+		&__num-two,
+		&__num-three,
+		&__num-four {
+			@extend .test-progress__done;
+		}
+
+		&__steps-bg-one,
+		&__steps-bg-two,
+		&__steps-bg-three,
+		&__steps-bg-four {
+			@extend .test-steps__done;
+		}
+	}
+}
+
+/* test instructions */
+.test-instructions {
+	@extend .help-block;
+
+	h4 {
+		font-size: inherit;
+	}
+}
+
+/* buttons */
+// #completeTestBtn {
+// 	height: 3rem;
+// }
+
+/* tester name */
+.tester-names {
+	margin-bottom: 1rem;
+
+	button {
+		position: absolute;
+		right: 15px;
+		top: 8px;
+		padding: 0;
+		width: 1.6rem;
+		height: 1.6rem;
+		text-align: center;
+		border-radius: 100% !important;
+
+		.fa {
+			position: relative;
+			top: 2px;
+		}
+	}
+	
+	.tester-name {
+		display: table-cell;
+		border: 1px solid $lighter;
+		border-right-color: transparent;
+		line-height: 2rem;
+		vertical-align: top;
+		padding: 0 1rem;
+		font-size: .8em;
+		color: $light;
+		
+		&:last-child {
+			border-radius: $border-radius-small 0 0 $border-radius-small;
+		}
+		&:last-child {
+			border-right-color: $lighter;
+			border-radius: 0 $border-radius-small $border-radius-small 0;
+		}
+	}
+}
+
+
+/* testing progress */
+.testing__progress-bar {
+	@extend .progress-bar;
+	display: inline-block;
+	border-radius: $border-radius-small;
+	width: 200px;
+	height: 1.4rem;
+	margin-right: 1rem;
+	vertical-align: middle;
+}

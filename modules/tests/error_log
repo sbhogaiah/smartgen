@@ -1,0 +1,1 @@
+[18-Oct-2017 17:05:55 Asia/Calcutta] PHP Fatal error:  Call to a member function fetch_array() on a non-object in /home/somashekarbhg/public_html/testserver/smartgen/modules/tests/start.php on line 40

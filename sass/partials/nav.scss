@@ -1,0 +1,104 @@
+.nav {
+	height: 3rem;
+	background-color: $nav-bg;
+	border-bottom: 1px solid $lighter;
+	box-shadow: $shadow-big-dark;
+	position: relative;
+	z-index: $zi-5;
+
+	&__content {
+		@extend .container-collapsed;
+	}
+
+	&__logo {
+		display: block;
+		height: 3rem;
+		background: #2eccac;
+		background: -moz-linear-gradient(left, #2eccac 0%, #03a9f4 100%);
+		background: -webkit-linear-gradient(left, #2eccac 0%,#03a9f4 100%);
+		background: linear-gradient(to right, #2eccac 0%,#03a9f4 100%);
+		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#2eccac', endColorstr='#03a9f4',GradientType=1 );
+		float: left;
+
+		span {
+			background: url(../img/logo-w.png) no-repeat center top / contain;
+			display: block;
+			height: 2rem;
+			margin-top: 0.5rem;
+			margin-bottom: 0.5rem;
+			padding: 0 1rem;
+			width: 200px;
+			text-indent: -9999px;
+		}
+	}
+
+	&__heading {
+		color: $gray;
+		font-size: 0.9em;
+		font-weight: $font-weight;
+		float: left;
+		line-height: 3rem;
+		margin: 0 0 0 1rem;
+	}
+
+	&__links {
+		margin: 0;
+		padding: 0;
+		list-style-type: none;
+		float: right;
+		
+		li {
+			float: left;
+		}
+
+		a {
+			display: block;
+			line-height: 3rem;
+			padding: 0 1rem;
+			font-size: 0.8em;
+			color: $light;
+			border-left: 1px solid rgba($black, .05);
+			text-transform: uppercase;
+
+			@include transition('fast');
+
+			&:hover {
+				color: $blue;
+				text-decoration: none;
+			}
+
+		}
+
+		.user-name {
+			display: block;
+			margin: .7rem;
+		}
+	}
+
+}
+
+/* home nav */
+.home .nav {
+	background-color: transparent;
+	border-bottom: 0;
+	box-shadow: none;
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	z-index: $zi-7;
+
+	&__logo {
+		background: transparent;
+
+		span {
+			background-image: url(../img/logo-w.png);
+			height: 3rem;
+			width: 260px;
+		}
+	}
+
+	&__heading {
+		display: none;
+	}
+}

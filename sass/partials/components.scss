@@ -1,0 +1,560 @@
+/* progress bar */
+@-webkit-keyframes stripes-move {
+	0% {
+		background-position: 0 0;
+	}
+	100% {
+		background-position: 50px 50px;
+	}
+}
+
+@keyframes stripes-move {
+	0% {
+		background-position: 0 0;
+	}
+	100% {
+		background-position: 50px 50px;
+	}
+}
+
+.progress-bar {
+	display: block;
+	height: 1rem;
+	background-color: $lighter;
+	border-radius: $border-radius-small;
+	overflow: hidden;
+
+	> span {
+		height: 100%;
+		display: block;
+		overflow: hidden;
+		position: relative;
+		background-color: $blue;
+		transition: 500ms linear;
+		-webkit-transition: 500ms linear;
+		text-align: center;
+		color: #fff;
+		font-size: .9em;
+		font-weight: $font-weight-bold;
+		text-transform: uppercase;
+	}
+
+	> span:after {
+		content: "";
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		z-index: 1;
+		position: absolute;
+		background-size: 50px 50px;
+		overflow: hidden;
+		animation: stripes-move 1s linear infinite;
+		-webkit-animation: stripes-move 1s linear infinite;
+		background-image: -webkit-linear-gradient(135deg, rgba(255, 255, 255, .2) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, .2) 50%, rgba(255, 255, 255, .2) 75%, transparent 75%, transparent);
+		background-image: linear-gradient(-45deg, rgba(255, 255, 255, .2) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, .2) 50%, rgba(255, 255, 255, .2) 75%, transparent 75%, transparent);
+	}
+
+	> span:after {
+		-webkit-animation: stripes-move 2s linear infinite;
+		animation: stripes-move 2s linear infinite;
+	}
+
+	&.progress-bar__orange {
+		> span {
+			background-color: $orange;
+		}
+	}
+
+	&.progress-bar__red {
+		> span {
+			background-color: $red;
+		}
+	}
+
+	&.progress-bar__green {
+		> span {
+			background-color: $green;
+		}
+	}
+
+	&.progress-bar__orange {
+		> span {
+			background-color: $orange;
+		}
+	}
+
+	&.progress-bar__yellow {
+		> span {
+			background-color: $yellow;
+		}
+	}
+
+	&.progress-bar__paused {
+		> span:after {
+			animation-play-state: paused;
+		}
+	}
+}
+
+/* pills */
+.pill {
+	display: inline-block;
+	background: transparent;
+	color: $gray;
+	font-size: 0.75em;
+	font-weight: $font-weight-bold;
+	padding: 0.2rem 0.9rem 0.2rem;
+	text-transform: uppercase;
+	
+	@include pill;
+
+	&.pill-blue {
+		@include pill($blue, $white);
+	}
+
+	&.pill-orange {
+		@include pill($orange, $white);
+	}
+
+	&.pill-red {
+		@include pill($red, $white);
+	}
+
+	&.pill-green {
+		@include pill($green, $white);
+	}
+
+	&.pill-yellow {
+		@include pill($yellow, $white);
+	}
+
+	&.pill-dark {
+		@include pill($dark, $white);
+	}
+
+}
+
+
+/* buttons */
+.btn {
+	display: inline-block;
+	background-color: transparent;
+	color: $gray;
+	border: 0;
+	font-size: 0.8em;
+	padding: 0.8rem 1.6rem;
+	cursor: pointer;
+	text-decoration: none;
+	
+	@include button;
+
+	&.btn-blue {
+		@include button($blue, $white);
+	}
+
+	&.btn-orange {
+		@include button($orange, $white);
+	}
+
+	&.btn-red {
+		@include button($red, $white);
+	}
+
+	&.btn-green {
+		@include button($green, $white);
+	}
+
+	&.btn-yellow {
+		@include button($yellow, $white);
+	}
+
+	&.btn-dark {
+		@include button($dark, $white);
+	}
+
+	&.btn-light {
+		@include button($light, $white);
+	}
+
+	&.btn-sm {
+		padding: 0.4rem 1rem;
+	}
+
+	&.btn-block {
+		width: 100%;
+
+		&.btn-icon {
+			text-align: left;
+			padding-left: 1rem;
+
+			.fa {
+				width: 1.5rem;
+			}
+		}
+	}
+}
+
+.btn-group {
+	display: table;
+	width: 100%;
+
+	.btn {
+		display: table-cell;
+		border-radius: 0;
+		
+		&.btn-outline:not(:last-child) {
+			border-right: 0;
+		}
+
+		&:first-child {
+			border-radius: $border-radius-small 0 0 $border-radius-small;
+		}
+
+		&:last-child {
+			border-radius: 0 $border-radius-small $border-radius-small 0;
+		}
+	}
+}
+
+/* preloader */
+.parent-blur > *:not(.preloader) {
+	filter: blur(2px);
+}
+
+.preloader {
+	background-color: rgba(255, 255, 255, .7);
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+	z-index: $zi-9;
+
+	img {
+		width: 100px;
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		margin-left: -50px;
+		margin-top: -5px;
+	}
+}
+
+/* nag */
+.nag {
+	position: fixed;
+	bottom: -100%;
+	right: 2rem;
+	z-index: $zi-10;
+	padding: 0rem 4rem 0.2rem 1.5rem;
+	
+	@include transition('fast');
+	@include nag;
+
+	p {
+		margin: 0;
+		line-height: 2.6rem;
+		color: rgba($white, .9);
+		font-size: 0.8em;
+		font-weight: $font-weight-heavy;
+	}
+
+	&-close {
+		background-color: transparent;
+		border: 0;
+		color: $white;
+		font-size: 1.6rem;
+		font-weight: $font-weight-bold;
+		position: absolute;
+		right: 0;
+		top: 0;
+		opacity: .4;
+		height: 2.8rem;
+		width: 2.8rem;
+		cursor: pointer;
+
+		@include transition('fast');
+
+		&:hover {
+			opacity: 1;
+		}
+	}
+
+	&.nag-error {
+		@include nag($red, $white);
+	}
+
+	&.nag-warn {
+		@include nag($yellow, $white);
+	}
+
+	&.nag-success {
+		@include nag($green, $white);
+	}
+
+	&.show {
+		bottom: 2rem;
+	}
+
+}
+
+/* tooltip */
+.tt {
+	position: absolute;
+	left: 0;
+	top: 0;
+	background-color: $white;
+	padding: .8rem;
+	border-radius: $border-radius-small;
+	box-shadow: $shadow-big;
+	opacity: 0;
+	transform: translateY(20px);
+	pointer-events: none;
+	z-index: $zi-10;
+
+	@include transition('fast');
+	@include transition-props(transform, opacity);
+
+	.tt-contents {
+		color: rgba($gray, 1);
+		font-size: 0.8em;
+		font-weight: $font-weight;
+		white-space: nowrap;
+	}
+
+	.tt-arrow {
+		display: block;
+		width: 0;
+		height: 0;
+		border: 6px solid transparent;
+		border-bottom-color: $white;
+		position: absolute;
+		bottom: 100%;
+		left: 50%;
+		margin-left: -6px;
+	}
+
+	&.tt-right .tt-arrow {
+		margin-left: 0;
+		margin-right: -6px;
+	}
+
+	&.tt-left .tt-arrow {
+		margin-right: 0;
+		margin-left: -6px;
+	}
+
+	&.show {
+		opacity: 1;
+		transform: translateY(0px);
+	}
+}
+
+// if top
+[data-placement="top"] + .tt {
+	transform: translateY(-20px);
+	
+	.tt-arrow { 
+		border-bottom-color: transparent;
+		border-top-color: $white;
+		bottom: auto;
+		top: 100%;
+	}
+
+	&.show {
+		transform: translateY(0px);
+	}
+}
+
+/* section heading */
+.page-header {
+	@extend .cf;
+	background-color: $darker;
+	border-bottom: 1px solid $lighter;
+	padding: 1.5rem;
+	padding-bottom: 1.5rem;
+	margin-bottom: 1.5rem;
+
+	@extend .container-collapsed;
+
+	&__left {
+		float: left;
+
+		> :first-child {
+			margin: .2rem 0 0;
+			font-size: 1em;
+			line-height: 26px;
+			font-weight: $font-weight;
+			color: lighten($blue, 40%);
+		}
+
+		p {
+			margin-top: .6rem;
+			color: $lighter;
+		}
+	}
+
+	&__right {
+		float: right;
+	}
+}
+
+.admin .page-header {
+	border-left: 1px solid lighten($darker, 10%);
+}
+
+/* card */
+.card {
+	background-color: $white;
+	// border-radius: $border-radius-big;
+	// border: 1px solid $lighter;
+	box-shadow: $shadow-mid;
+	position: relative;
+	margin-bottom: 2rem;
+
+	&__header {
+		margin-bottom: 0.5rem;
+		padding: 1.2rem 1rem 0;
+
+		* {
+			margin: 0;
+		}
+	}
+
+	&__body {
+		padding: 0.6rem 1rem;
+	}
+
+	&__footer {
+		padding: 0 1rem 1.4rem;
+	}
+
+	&__progress-bar {
+		@extend .progress-bar;
+		
+		border-radius: 0;
+		margin-top: 1.2rem;
+		height: 8px;
+		position: absolute;
+		bottom: 0;
+		left: 0;
+		width: 100%;
+		border-radius: 0 0 $border-radius-big $border-radius-big;
+		opacity: 0;
+		@include transition('fast');
+	}
+
+	&.loading {
+		.card__progress-bar {
+			opacity: 1;
+		}
+	}
+}
+
+/* help */
+.help-icon {
+	display: inline-block;
+	cursor: help;
+	opacity: .5;
+	margin: 0 .2rem;
+
+	&:hover {
+		opacity: 1;
+	}
+}
+
+.help-block {
+	border: 1px solid $lighter;
+	background-color: lighten($yellow, 49%);
+	padding: 0.6rem 0.6rem;
+	font-size: 0.9rem;
+	font-weight: $font-weight;
+	display: block;
+	margin: 0.5rem 0 0;
+	color: $gray;
+	border-radius: $border-radius-small;
+
+	* {
+		color: inherit;
+	}
+
+	.fa {
+		font-size: 1.2rem;
+		vertical-align: middle;
+		opacity: .6;
+		margin-right: .5rem;
+		position: relative;
+		top: -1px;
+	}
+
+	&.help-block__error {
+		border: 0;
+		background-color: lighten($red, 5%);
+		color: $white;
+	}
+
+	&.help-block__success {
+		border: 0;
+		background-color: lighten($green, 5%);
+		color: $white;
+	}
+
+	&.help-block__warn {
+		border: 0;
+		background-color: lighten($orange, 5%);
+		color: $white;
+	}
+}
+
+/* modal */
+.modal {
+	position: fixed;
+	overflow: auto;
+	width: 100%; height: 100%;
+	top: 0; left: 0;
+	background-color: rgba(0, 0, 0, 0.6);
+	padding: 3rem 0;
+	display: none;
+	
+	&-contents {
+		max-width: 600px;
+		min-height: 100px;
+		background-color: #fff;
+		padding: 1.5rem;
+		margin: 2.5rem auto;
+		border-radius: $border-radius-small;
+		position: relative;
+
+		.modal-header {
+			padding:  0 0 .8rem;
+			border-bottom: 1px solid $lighter;
+
+			h3 {
+				margin: 0;
+			}
+		}
+	}
+}
+
+
+.modal-contents [data-modal-close] {
+	position: absolute;
+	top: -15px; right: 15px;
+	background-color: #FC2D2D;
+	color: #fff;
+	width: 60px; height: 30px;
+	border: 2px solid #fff;
+	border-radius: 5px;
+	cursor: pointer;
+	z-index: 101;
+}
+.modal-contents [data-modal-close]:hover {
+	background-color: #EA1F1F;
+}
+.modal-contents [data-modal-close]:focus {
+	outline: 0;
+}
+.modal-contents .modal-body {
+	padding-top: 10px;
+}

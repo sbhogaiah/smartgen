@@ -1,0 +1,5 @@
+[24-Oct-2017 21:50:02 Asia/Calcutta] PHP Fatal error:  Call to undefined function hoursToMinutes() in /home/somashekarbhg/public_html/testserver/smartgen/modules/edit_cycle.php on line 9
+[24-Oct-2017 21:51:23 Asia/Calcutta] PHP Fatal error:  Call to undefined function hoursToMinutes() in /home/somashekarbhg/public_html/testserver/smartgen/modules/edit_cycle.php on line 9
+[24-Oct-2017 21:52:09 Asia/Calcutta] PHP Fatal error:  Call to undefined function hoursToMinutes() in /home/somashekarbhg/public_html/testserver/smartgen/modules/edit_cycle.php on line 9
+[24-Oct-2017 21:59:49 Asia/Calcutta] PHP Fatal error:  Call to undefined function hoursToMinutes() in /home/somashekarbhg/public_html/testserver/smartgen/modules/create_cycle.php on line 10
+[24-Oct-2017 22:01:52 Asia/Calcutta] PHP Fatal error:  Call to undefined function hoursToMinutes() in /home/somashekarbhg/public_html/testserver/smartgen/modules/create_cycle.php on line 10
